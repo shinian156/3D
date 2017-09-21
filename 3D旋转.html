@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body {
+				background: black;
+			}
+			
+			.heart3D {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				width: 200px;
+				height: 260px;
+				/*background: red;*/
+				-webkit-perspective: 1000px;
+				transform-style: preserve-3d;
+				animation: rot 10s linear infinite;
+			}
+			
+			@keyframes rot {
+				to {
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+			
+			.heart {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 200px;
+				height: 260px;
+				border: 1px solid red;
+				border-left: 0;
+				border-bottom: 0;
+				border-radius: 50% 50% 0/40% 50% 0;
+				transform: rotate(0deg);
+			}
+			
+			.cube {
+				position: relative;
+				left: 80px;
+				top: 80px;
+				width: 200px;
+				height: 200px;
+				transform-origin: 50% 50% -101px;
+				transform-style: preserve-3d;
+				transition: 10s;
+				transform: translateZ(30px);
+			}
+			.cube div {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+			}
+			
+			.cube div:nth-child(1) {
+				left: 0;
+				top: -52px;
+				transform-origin: bottom;
+				transform: rotateX(90deg);
+			}
+			
+			.cube div:nth-child(2) {
+				left: 0;
+				top: 52px;
+				transform-origin: top;
+				transform: rotateX(-90deg);
+			}
+			
+			.cube div:nth-child(3) {
+				left: -52px;
+				top: 0;
+				transform-origin: right;
+				transform: rotateY(-90deg);
+			}
+			
+			.cube div:nth-child(4) {
+				left: 52px;
+				top: 0;
+				transform-origin: left;
+				transform: rotateY(90deg);
+			}
+			
+			.cube div:nth-child(5) {
+				left: 0;
+				top: 0;
+			}
+			
+			.cube div:nth-child(6) {
+				left: 0;
+				top: 0;
+				transform: translateZ(-50px);
+			}
+			img{
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="heart3D">
+			<div class="cube">
+				<div><img src="images/1.jpg" /></div>
+				<div><img src="images/5.jpg" /></div>
+				<div><img src="images/6.jpg" /></div>
+				<div><img src="images/8.jpg" /></div>
+				<div><img src="images/10.jpg" /></div>
+				<div><img src="images/11.jpg" /></div>
+			</div>
+		</div>
+		<script>
+			var heart3D = document.getElementsByClassName("heart3D")[0];
+			for (var i = 0; i < 36; i++) {
+				var oDiv = document.createElement("div");
+				oDiv.className = "heart";
+				oDiv.style.transform = "rotateY(" + (i * 10) + "deg) rotateZ(45deg) translateX(30px)"
+				heart3D.appendChild(oDiv);
+			}
+		</script>
+	</body>
+
+</html>
